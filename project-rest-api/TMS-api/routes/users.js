@@ -91,6 +91,31 @@ router.post('/users', function(req, res, next) {
 
 
 /**
+ * update a  Schedule
+ */
+router.put('/user/:id/user', function(req, res, next) {
+
+  var id = req.params.id;
+  
+  var user = req.body;
+  console.log(user);
+  var options = {new:true};
+
+   User.findOneAndUpdate({_id:id},
+          user,
+          options,
+          (err,user)=>{
+              if(err){
+                throw err;
+              }else {
+                res.send(user);
+              }
+          });
+ });
+
+
+
+/**
  * add a new Schedule
  */
 router.post('/user/:id/schedule', function(req, res, next) {
